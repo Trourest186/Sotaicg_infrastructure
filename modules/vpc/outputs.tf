@@ -19,9 +19,9 @@ output "aws_route_table_public" {
   value = aws_route_table.public.id
 }
 
-# output "aws_route_table_private" {
-#   value = aws_route_table.private.id
-# }
+output "aws_route_table_private" {
+  value = aws_route_table.private.id
+}
 
 output "aws_route_table_bastion" {
   value = aws_security_group.bastion.id
@@ -41,11 +41,11 @@ output "public1_subnet" {
 }
 
 output "public2_subnet" {
-  value = aws_subnet.pub1.id
+  value = aws_subnet.pub2.id
 }
 
 output "public3_subnet" {
-  value = aws_subnet.pub1.id
+  value = aws_subnet.pub3.id
 }
 
 # Output for private_subnet

@@ -1,0 +1,9 @@
+.env
+.terraform.lock.hcl
+.terraform
+.terraform.tfvars
+
+# For infrastructure
+./1-infrastructure/.terraform
+./1-infrastructure/.terraform.lock.hcl
+./1-infrastructure/.terraform.tfvars

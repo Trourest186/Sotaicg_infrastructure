@@ -18,7 +18,7 @@
         "options": {
           "awslogs-group": "${logs_service_name}",
           "awslogs-region": "${region}",
-          "awslogs-stream-prefix": "${logs_service_name}-LogGroup-stream"
+          "awslogs-stream-prefix": "ecs"
         }
       }
     }

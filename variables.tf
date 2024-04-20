@@ -42,14 +42,42 @@ variable "task_ram" {
   
 }
 
-variable "tg_arn" {
+# variable "tg_arn" {
   
-}
+# }
 
 variable "desired_count" {
   
 }
 
+
+variable "max_containeres" {
+  
+}
+
+variable "min_containeres" {
+  
+}
+
+variable "container_name_ecs" {
+  type = string
+}
+
+variable "spring_profile_ecs" {
+  type = string
+}
+
+variable "auto_scaling_target_value_cpu" {
+
+}
+
+variable "auto_scaling_target_value_ram" {
+  
+}
+
+variable "name_ecs" {
+
+}
 # ALB
 variable "dns_cert_arn" {
   
@@ -64,10 +92,27 @@ variable "health_check_path" {
 
 }
 
-variable "container_port" {
+variable "container_port_ecs" {
 
+}
+
+# variable "host_header" {
+
+# }
+
+# Route 53
+## ALB
+variable "hosted_zone_public_id" {
+  type = string
+  description = "Id of Route53 HostedZone public"
 }
 
 variable "host_header" {
+  type = string
+}
+
+# ACM
+variable "ecs_domain_name" {
 
 }
+

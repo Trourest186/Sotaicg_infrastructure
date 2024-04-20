@@ -19,9 +19,9 @@ variable "container_port" {
   type = number
 }
 
-variable "host_header" {
-  type = string
-}
+# variable "host_header" {
+#   type = string
+# }
 
 variable "aws_lb_listener_arn" {
   type = string

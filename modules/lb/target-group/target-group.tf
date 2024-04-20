@@ -28,9 +28,14 @@ resource "aws_lb_listener_rule" "lb_listener_rule_api" {
     target_group_arn = aws_lb_target_group.target_group.arn
   }
 
+  # condition {
+  #   host_header {
+  #     values = [var.host_header]
+  #   }
+  # }
   condition {
-    host_header {
-      values = [var.host_header]
+    path_pattern {
+      values = ["/*"]
     }
   }
 }

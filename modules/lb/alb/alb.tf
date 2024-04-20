@@ -51,23 +51,23 @@ resource "aws_lb_listener" "lb_listener_https" {
   }
 }
 
-resource "aws_lb_listener" "lb_listener_http" {
-  load_balancer_arn = aws_lb.lb.arn
-  port = "80"
-  protocol = "HTTP"
+# resource "aws_lb_listener" "lb_listener_http" {
+#   load_balancer_arn = aws_lb.lb.arn
+#   port = "80"
+#   protocol = "HTTP"
 
-  default_action {
-    type = "redirect"
-    redirect {
-      protocol = "HTTPS"
-      port = "443"
-      host = "#{host}"
-      path = "/#{path}"
-      query = "#{query}"
-      status_code = "HTTP_301"
-    }
-  }
-}
+#   default_action {
+#     type = "redirect"
+#     redirect {
+#       protocol = "HTTPS"
+#       port = "443"
+#       host = "#{host}"
+#       path = "/#{path}"
+#       query = "#{query}"
+#       status_code = "HTTP_301"
+#     }
+#   }
+# }
 
 output "lb_dns_name" {
   value = aws_lb.lb.dns_name

@@ -1,5 +1,5 @@
 variable "ecs_cluster_name" {
-  description = "Ecs cluster name"
+  description = "ECS Cluster name"
   type = string
 }
 
@@ -16,42 +16,28 @@ variable "common" {
   })
 }
 
-variable "ecs" {
-  type = object({
-    role_auto_scaling = string
-    role_execution = string
-    role_ecs_service = string
-    ecs_cluster_id = string
-    ecs_cluster_name = string
-  })
+variable "subnet_ids" {
+  type = list(string)
 }
 
-variable "network" {
-  type = object({
-    vpc_id = string
-    subnet_ids = list(string)
-    sg_container = string
-  })
+variable "vpc_id" {
+  
 }
-
 
 variable "name" {
   
 }
 
-variable "container_name" {
+variable "container_name_ecs" {
   
 }
 
-variable "ecs" {
-  
-}
 
-variable "container_port" {
+variable "container_port_ecs" {
  
 }
 
-variable "spring_profile" {
+variable "spring_profile_ecs" {
   
 }
 
@@ -86,5 +72,13 @@ variable "max_containers" {
 }
 
 variable "min_containers" {
+  
+}
+
+variable "aws_lb_listener_arn" {
+  
+}
+
+variable "domain_name" {
   
 }

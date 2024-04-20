@@ -43,39 +43,39 @@ resource "aws_subnet" "pub1" {
   }
 }
 
-# # Create public subnet 2
-# resource "aws_subnet" "pub2" {
-#   vpc_id = aws_vpc.vpc.id
+# Create public subnet 2
+resource "aws_subnet" "pub2" {
+  vpc_id = aws_vpc.vpc.id
 
-#   cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 1)
-#   availability_zone       = data.aws_availability_zones.available.names[1]
-#   map_public_ip_on_launch = true
+  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 1)
+  availability_zone       = data.aws_availability_zones.available.names[1]
+  map_public_ip_on_launch = true
 
-#   tags = {
-#     Name    = "${var.project}-pub2"
-#     Project = "${var.name}"
-#   }
-# }
+  tags = {
+    Name    = "${var.project}-pub2"
+    Project = "${var.name}"
+  }
+}
 
-# # Create public subnet 3
-# resource "aws_subnet" "pub3" {
-#   vpc_id = aws_vpc.vpc.id
+# Create public subnet 3
+resource "aws_subnet" "pub3" {
+  vpc_id = aws_vpc.vpc.id
 
-#   cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 2)
-#   availability_zone       = data.aws_availability_zones.available.names[2]
-#   map_public_ip_on_launch = true
+  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 2)
+  availability_zone       = data.aws_availability_zones.available.names[2]
+  map_public_ip_on_launch = true
 
-#   tags = {
-#     Name    = "${var.project}-pub2"
-#     Project = "${var.name}"
-#   }
-# }
+  tags = {
+    Name    = "${var.project}-pub2"
+    Project = "${var.name}"
+  }
+}
 
 # Create private subnet 1
 resource "aws_subnet" "priv1" {
   vpc_id = aws_vpc.vpc.id
 
-  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 1)
+  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 3)
   availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
 
@@ -88,7 +88,7 @@ resource "aws_subnet" "priv1" {
 resource "aws_subnet" "priv2" {
   vpc_id = aws_vpc.vpc.id
 
-  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 2)
+  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 4)
   availability_zone       = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = true
 
@@ -101,7 +101,7 @@ resource "aws_subnet" "priv2" {
 resource "aws_subnet" "priv3" {
   vpc_id = aws_vpc.vpc.id
 
-  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 3)
+  cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 5)
   availability_zone       = data.aws_availability_zones.available.names[2]
   map_public_ip_on_launch = true
 
@@ -110,6 +110,32 @@ resource "aws_subnet" "priv3" {
     Project = "${var.name}"
   }
 }
+
+# resource "aws_subnet" "priv2" {
+#   vpc_id = aws_vpc.vpc.id
+
+#   cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 2)
+#   availability_zone       = data.aws_availability_zones.available.names[1]
+#   map_public_ip_on_launch = true
+
+#   tags = {
+#     Name    = "${var.project}-priv2"
+#     Project = "${var.name}"
+#   }
+# }
+
+# resource "aws_subnet" "priv3" {
+#   vpc_id = aws_vpc.vpc.id
+
+#   cidr_block              = cidrsubnet(var.vpc_cidr, var.sbit, 3)
+#   availability_zone       = data.aws_availability_zones.available.names[2]
+#   map_public_ip_on_launch = true
+
+#   tags = {
+#     Name    = "${var.project}-priv3"
+#     Project = "${var.name}"
+#   }
+# }
 # # Create Elastic IP for Nat Gatway
 # resource "aws_eip" "eip" {
 #   vpc      = true
@@ -143,18 +169,15 @@ resource "aws_route_table" "public" {
   }
 }
 
-# # Create private route table
-# resource "aws_route_table" "private" {
-#   vpc_id = aws_vpc.vpc.id
+# Create private route table
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.vpc.id
 
-#   route  {
-#       cidr_block = "0.0.0.0/0"
-#   }
-#   tags = {
-#     Name = "${var.project}-private-rtb"
-#     Project  = "${var.name}"
-#   }
-# }
+  tags = {
+    Name = "${var.project}-private-rtb"
+    Project  = "${var.name}"
+  }
+}
 
 # Create Public Route Table Association
 resource "aws_route_table_association" "pub1" {
@@ -162,18 +185,30 @@ resource "aws_route_table_association" "pub1" {
   route_table_id = aws_route_table.public.id
 }
 
-# resource "aws_route_table_association" "pub2" {
-#   subnet_id      = aws_subnet.pub2.id
-#   route_table_id = aws_route_table.public.id
-# }
+resource "aws_route_table_association" "pub2" {
+  subnet_id      = aws_subnet.pub2.id
+  route_table_id = aws_route_table.public.id
+}
 
-# resource "aws_route_table_association" "pub3" {
-#   subnet_id      = aws_subnet.pub3.id
-#   route_table_id = aws_route_table.public.id
-# }
+resource "aws_route_table_association" "pub3" {
+  subnet_id      = aws_subnet.pub3.id
+  route_table_id = aws_route_table.public.id
+}
 
-# Create Private Route Table Association
-# resource "aws_route_table_association" "priv1" {
-#   subnet_id      = aws_subnet.priv1.id
-#   route_table_id = aws_route_table.private.id
-# }
+#Create Private Route Table Association
+resource "aws_route_table_association" "priv1" {
+  subnet_id      = aws_subnet.priv1.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "priv2" {
+  subnet_id      = aws_subnet.priv2.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "priv3" {
+  subnet_id      = aws_subnet.priv3.id
+  route_table_id = aws_route_table.private.id
+}
+
+
