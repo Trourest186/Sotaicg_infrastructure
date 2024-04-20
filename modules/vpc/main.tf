@@ -174,8 +174,8 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.project}-private-rtb"
-    Project  = "${var.name}"
+    Name    = "${var.project}-private-rtb"
+    Project = "${var.name}"
   }
 }
 

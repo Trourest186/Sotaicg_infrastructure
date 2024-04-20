@@ -3,7 +3,7 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-    type = list(string) 
+  type = list(string)
 }
 
 variable "route_table_id" {

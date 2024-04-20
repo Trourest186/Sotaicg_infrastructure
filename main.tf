@@ -18,8 +18,8 @@ locals {
   }
 
   network = {
-    vpc_id     = data.terraform_remote_state.infrastructure.outputs.aws_vpc
-    subnet_ids = [data.terraform_remote_state.infrastructure.outputs.private1_subnet, data.terraform_remote_state.infrastructure.outputs.private2_subnet]
+    vpc_id         = data.terraform_remote_state.infrastructure.outputs.aws_vpc
+    subnet_ids     = [data.terraform_remote_state.infrastructure.outputs.private1_subnet, data.terraform_remote_state.infrastructure.outputs.private2_subnet]
     route_table_id = [data.terraform_remote_state.infrastructure.outputs.private-routetb]
   }
 }
@@ -98,3 +98,26 @@ locals {
 #   aws_lb_listener_arn = module.alb.aws_lb_listener_arn
 #   domain_name = var.ecs_domain_name
 # }
+
+
+
+# module "web_cnd" {
+#   source      = "./modules/cloudfront"
+#   common      = local.common
+#   cf_cert_arn = var.cf_cert_arn
+#   cdn_domain  = var.cdn_domain
+# }
+
+# # Create A record (Alias) for CDN
+# module "route_53_cdn" {
+#   source                = "./modules/route-53/hostzone-cdn"
+#   hosted_zone_public_id = var.hosted_zone_public_id
+#   domain                = var.domain
+#   cf_s3_domain_name     = module.web_cnd.cf_distribution_domain_name    # Change
+#   cf_s3_hosted_zone_id  = module.web_cnd.cf_distribution_hosted_zone_id # Change
+# }
+
+module "alb_waf" {
+  source = "./modules/waf"
+  alb_arn = "arn:aws:elasticloadbalancing:us-east-1:115228050885:loadbalancer/app/test/3b6b75d6f2d78cba"
+}

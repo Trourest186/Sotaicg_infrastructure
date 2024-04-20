@@ -29,18 +29,18 @@ resource "aws_security_group" "sg_lb" {
 }
 
 resource "aws_lb" "lb" {
-  name = "${var.common.env}-${var.common.project}-lb"
-  internal = false
+  name               = "${var.common.env}-${var.common.project}-lb"
+  internal           = false
   load_balancer_type = "application"
-  security_groups = [aws_security_group.sg_lb.id]
-  subnets = var.subnet_ids
+  security_groups    = [aws_security_group.sg_lb.id]
+  subnets            = var.subnet_ids
 }
 
 resource "aws_lb_listener" "lb_listener_https" {
   load_balancer_arn = aws_lb.lb.arn
-  port = "443"
-  protocol = "HTTPS"
-  certificate_arn = var.dns_cert_arn
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn   = var.dns_cert_arn
 
   default_action {
     type = "fixed-response"

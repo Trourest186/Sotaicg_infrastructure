@@ -1,8 +1,8 @@
 variable "common" {
   type = object({
-    project = string
-    env = string
-    region = string
+    project    = string
+    env        = string
+    region     = string
     account_id = string
   })
 }
@@ -16,5 +16,5 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-  type = list
+  type = list(any)
 }
