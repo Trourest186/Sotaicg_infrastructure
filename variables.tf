@@ -129,3 +129,43 @@ variable "cf_cert_arn" {
 variable "cdn_domain" {
 
 }
+
+
+# CI/CD
+## Codebuild
+variable "name_codebuild" {
+
+}
+
+variable "privileged_mode" {
+  type = bool
+}
+
+variable "repo" {
+
+}
+
+variable "account" {
+
+}
+
+variable "branch" {
+
+}
+
+variable "env_var" {
+
+}
+
+## Codepipeline
+variable "name" {
+
+}
+
+# variable "services" {
+  
+# }
+
+variable "repo_pipeline" {
+  
+}

@@ -1,0 +1,111 @@
+[index_ips_public]
+%{ for index, dns in index_ips_public ~}
+${index_ips_public[index]}
+%{ endfor ~}
+
+[query_ips_public]
+%{ for index, dns in query_ips_public ~}
+${query_ips_public[index]}
+%{ endfor ~}
+
+[data_ips_public]
+%{ for index, dns in data_ips_public ~}
+${data_ips_public[index]}
+%{ endfor ~}
+
+[proxy_ips_public]
+%{ for index, dns in proxy_ips_public ~}
+${proxy_ips_public[index]}
+%{ endfor ~}
+
+[minio_ips_public]
+%{ for index, dns in minio_ips_public ~}
+${minio_ips_public[index]}
+%{ endfor ~}
+
+[pulsar_ips_public]
+%{ for index, dns in pulsar_ips_public ~}
+${pulsar_ips_public[index]}
+%{ endfor ~}
+
+[etcd_ips_public]
+%{ for index, dns in etcd_ips_public ~}
+${etcd_ips_public[index]}
+%{ endfor ~}
+
+[root_coordinator_ips_public]
+%{ for index, dns in root_coordinator_ips_public ~}
+${root_coordinator_ips_public[index]}
+%{ endfor ~}
+
+[query_coordinator_ips_public]
+%{ for index, dns in query_coordinator_ips_public ~}
+${query_coordinator_ips_public[index]}
+%{ endfor ~}
+
+[index_coordinator_ips_public]
+%{ for index, dns in index_coordinator_ips_public ~}
+${index_coordinator_ips_public[index]}
+%{ endfor ~}
+
+[data_coordinator_ips_public]
+%{ for index, dns in data_coordinator_ips_public ~}
+${data_coordinator_ips_public[index]}
+%{ endfor ~}
+
+
+[index_ips_private]
+%{ for index, dns in index_ips_private ~}
+${index_ips_private[index]}
+%{ endfor ~}
+
+[query_ips_private]
+%{ for index, dns in query_ips_private ~}
+${query_ips_private[index]}
+%{ endfor ~}
+
+[data_ips_private]
+%{ for index, dns in data_ips_private ~}
+${data_ips_private[index]}
+%{ endfor ~}
+
+[proxy_ips_private]
+%{ for index, dns in proxy_ips_private ~}
+${proxy_ips_private[index]}
+%{ endfor ~}
+
+[minio_ips_private]
+%{ for index, dns in minio_ips_private ~}
+${minio_ips_private[index]}
+%{ endfor ~}
+
+[pulsar_ips_private]
+%{ for index, dns in pulsar_ips_private ~}
+${pulsar_ips_private[index]}
+%{ endfor ~}
+
+[etcd_ips_private]
+%{ for index, dns in etcd_ips_private ~}
+${etcd_ips_private[index]}
+%{ endfor ~}
+
+[root_coordinator_ips_private]
+%{ for index, dns in root_coordinator_ips_private ~}
+${root_coordinator_ips_private[index]}
+%{ endfor ~}
+
+[query_coordinator_ips_private]
+%{ for index, dns in query_coordinator_ips_private ~}
+${query_coordinator_ips_private[index]}
+%{ endfor ~}
+
+[index_coordinator_ips_private]
+%{ for index, dns in index_coordinator_ips_private ~}
+${index_coordinator_ips_private[index]}
+%{ endfor ~}
+
+[data_coordinator_ips_private]
+%{ for index, dns in data_coordinator_ips_private ~}
+${data_coordinator_ips_private[index]}
+%{ endfor ~}
+
